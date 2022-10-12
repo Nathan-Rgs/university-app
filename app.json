@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "AC2_universityApp",
+    "slug": "AC2_universityApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

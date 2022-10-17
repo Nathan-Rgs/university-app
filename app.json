@@ -1,10 +1,14 @@
 {
   "expo": {
-    "name": "AC2_universityApp",
+    "name": "University App",
     "slug": "AC2_universityApp",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "icon": "./assets/imgs/facensLogo.png",
+    "assetBundlePatterns": ["**/*"],
+    "splash": {
+      "image": "./assets/imgs/facensLogo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fff"
+    }
   }
 }

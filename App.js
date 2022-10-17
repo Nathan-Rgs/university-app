@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import Routes from "./components/Router/Router";
+import ThemeContext from "./components/Theme/ThemeContext";
+import Router from "./components/Router/Router";
 
 export default function App() {
+  const themeHook = useState("ImmersiveGradient");
+
   return (
     <SafeAreaProvider>
-      <Routes />
+      <ThemeContext.Provider value={themeHook}>
+        <Router />
+      </ThemeContext.Provider>
       <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"

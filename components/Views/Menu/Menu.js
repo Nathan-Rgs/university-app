@@ -1,9 +1,14 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Button, StyleSheet } from "react-native";
 
-export default function Tst1() {
+export default function Menu(props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> Test One Page 😎 </Text>
+      <Button
+        title="Ex 01"
+        onPress={() => {
+          props.navigation.navigate("Tst1");
+        }}
+      ></Button>
     </View>
   );
 }

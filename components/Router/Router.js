@@ -13,7 +13,6 @@ import ThemeContext from "../Theme/ThemeContext";
 import AppTheme from "../Theme/Theme";
 // PAGES
 import Settings from "../Views/Settings/Settings";
-import Tst1 from "../Views/Settings/Tst";
 import Tst2 from "../Views/Settings/Tst2";
 import Home from "../Views/Home/Home";
 import Menu from "../Views/Menu/Menu";
@@ -54,8 +53,8 @@ function RootNavigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Tst1"
-        component={Tst1}
+        name="Cadastros"
+        component={Cadastros}
         options={{ headerShown: false }}
       />
       <Stack.Screen

@@ -13,10 +13,14 @@ import ThemeContext from "../Theme/ThemeContext";
 import AppTheme from "../Theme/Theme";
 // PAGES
 import Settings from "../Views/Settings/Settings";
-import Tst2 from "../Views/Settings/Tst2";
 import Home from "../Views/Home/Home";
 import Menu from "../Views/Menu/Menu";
-import Cadastros from "../Views/Cadastros/Cadastros";
+// CADASTROS
+import CadastrosAlunos from "../Views/Cadastros/CadastroAlunos";
+import CadastrosDisciplina from "../Views/Cadastros/CadastroDisciplina";
+import CadastrosProfessor from "../Views/Cadastros/CadastroProfessor";
+import CadastrosHistorico from "../Views/Cadastros/CadastroHistorico";
+import CadastrosTurma from "../Views/Cadastros/CadastroTurma";
 import NotFoundScreen from "../Views/NotFound";
 
 const MyTheme = {
@@ -53,13 +57,28 @@ function RootNavigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Cadastros"
-        component={Cadastros}
+        name="Cadastro Alunos"
+        component={CadastrosAlunos}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Tst2"
-        component={Tst2}
+        name="Cadastro Professor"
+        component={CadastrosProfessor}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Cadastro Disciplina"
+        component={CadastrosDisciplina}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Cadastro Turma"
+        component={CadastrosTurma}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Cadastro Historico"
+        component={CadastrosHistorico}
         options={{ headerShown: false }}
       />
       <Stack.Screen

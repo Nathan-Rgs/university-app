@@ -1,28 +1,62 @@
-import React, { useContext } from "react";
-import { View, Pressable, StyleSheet, Text } from "react-native";
-// THEME AND CONTEXT
-import ThemeContext from "../../Theme/ThemeContext";
-import AppTheme from "../../Theme/Theme";
+import { ScrollView, View, StyleSheet } from "react-native";
+import React from "react";
+import { List, Avatar, Card } from "react-native-paper";
 
 export default function Menu(props) {
-  const [theme] = useContext(ThemeContext);
-
   return (
     <View style={styles.container}>
-      <Pressable
-        style={styles.menuButtonsStyle}
-        onPress={() => {
-          props.navigation.navigate("Cadastros");
-        }}
-      >
-        <Text
-          style={{
-            color: AppTheme[theme + "Container"].texts.textColor,
-          }}
-        >
-          Cadastros
-        </Text>
-      </Pressable>
+      <View style={styles.cardContainer}>
+        <Card.Title
+          title="Cadastros"
+          titleStyle={styles.title}
+          left={(props) => <Avatar.Icon {...props} icon="clipboard-list" />}
+        />
+
+        <ScrollView>
+          <View style={styles.cardContainerContent}>
+            <List.Item
+              title="Alunos"
+              left={(props) => (
+                <List.Icon {...props} color="grey" icon="account-group" />
+              )}
+              right={(props) => <List.Icon {...props} icon="arrow-right" />}
+              onPress={() => props.navigation.navigate("Cadastro Alunos")}
+            ></List.Item>
+            <List.Item
+              title="Professores"
+              left={(props) => (
+                <List.Icon {...props} color="grey" icon="account-group" />
+              )}
+              right={(props) => <List.Icon {...props} icon="arrow-right" />}
+              onPress={() => props.navigation.navigate("Cadastro Professor")}
+            ></List.Item>
+            <List.Item
+              title="Disciplinas"
+              left={(props) => (
+                <List.Icon {...props} color="grey" icon="account-group" />
+              )}
+              right={(props) => <List.Icon {...props} icon="arrow-right" />}
+              onPress={() => props.navigation.navigate("Cadastro Disciplina")}
+            ></List.Item>
+            <List.Item
+              title="Turmas"
+              left={(props) => (
+                <List.Icon {...props} color="grey" icon="account-group" />
+              )}
+              right={(props) => <List.Icon {...props} icon="arrow-right" />}
+              onPress={() => props.navigation.navigate("Cadastro Turma")}
+            ></List.Item>
+            <List.Item
+              title="Históricos"
+              left={(props) => (
+                <List.Icon {...props} color="grey" icon="account-group" />
+              )}
+              right={(props) => <List.Icon {...props} icon="arrow-right" />}
+              onPress={() => props.navigation.navigate("Cadastro Historico")}
+            ></List.Item>
+          </View>
+        </ScrollView>
+      </View>
     </View>
   );
 }
@@ -30,19 +64,23 @@ export default function Menu(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
   },
-  text: {
-    color: "white",
-  },
-  menuButtonsStyle: {
-    width: "auto",
+  cardContainer: {
+    marginHorizontal: 20,
+    borderRadius: 10,
     height: "auto",
-    borderRadius: 5,
-    padding: 10,
-    alignItems: "center",
-    marginVertical: 10,
-    backgroundColor: "#00a7df",
+    backgroundColor: "white",
+  },
+  cardContainerContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+  },
+  title: {
+    marginLeft: 45,
+    paddingTop: 10,
+    color: "black",
+    fontSize: 25,
+    textAlignVertical: "bottom",
   },
 });

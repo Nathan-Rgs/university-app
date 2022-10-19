@@ -103,7 +103,7 @@ function BottomTabNavigator() {
           height: 60,
           paddingTop: 5,
           paddingBottom: 5,
-          backgroundColor: "#00a7df",
+          backgroundColor: "#3D43C6",
           borderTopColor: "transparent",
         },
         tabBarHideOnKeyboard: true, // TODO hide bottom navigation when typing

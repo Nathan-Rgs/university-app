@@ -9,7 +9,13 @@ export default function Menu(props) {
         <Card.Title
           title="Cadastros"
           titleStyle={styles.title}
-          left={(props) => <Avatar.Icon {...props} icon="clipboard-list" />}
+          left={(props) => (
+            <Avatar.Icon
+              {...props}
+              style={{ backgroundColor: "#3D43C6" }}
+              icon="notebook"
+            />
+          )}
         />
 
         <ScrollView>
@@ -17,7 +23,7 @@ export default function Menu(props) {
             <List.Item
               title="Alunos"
               left={(props) => (
-                <List.Icon {...props} color="grey" icon="account-group" />
+                <List.Icon {...props} color="#3D43C6" icon="account" />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
               onPress={() => props.navigation.navigate("Cadastro Alunos")}
@@ -25,7 +31,7 @@ export default function Menu(props) {
             <List.Item
               title="Professores"
               left={(props) => (
-                <List.Icon {...props} color="grey" icon="account-group" />
+                <List.Icon {...props} color="#3D43C6" icon="account-tie" />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
               onPress={() => props.navigation.navigate("Cadastro Professor")}
@@ -33,7 +39,11 @@ export default function Menu(props) {
             <List.Item
               title="Disciplinas"
               left={(props) => (
-                <List.Icon {...props} color="grey" icon="account-group" />
+                <List.Icon
+                  {...props}
+                  color="#3D43C6"
+                  icon="book-open-page-variant"
+                />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
               onPress={() => props.navigation.navigate("Cadastro Disciplina")}
@@ -41,7 +51,7 @@ export default function Menu(props) {
             <List.Item
               title="Turmas"
               left={(props) => (
-                <List.Icon {...props} color="grey" icon="account-group" />
+                <List.Icon {...props} color="#3D43C6" icon="account-group" />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
               onPress={() => props.navigation.navigate("Cadastro Turma")}
@@ -49,7 +59,7 @@ export default function Menu(props) {
             <List.Item
               title="Históricos"
               left={(props) => (
-                <List.Icon {...props} color="grey" icon="account-group" />
+                <List.Icon {...props} color="#3D43C6" icon="clipboard-list" />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
               onPress={() => props.navigation.navigate("Cadastro Historico")}

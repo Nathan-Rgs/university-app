@@ -4,7 +4,7 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import ThemeContext from "../../Theme/ThemeContext";
 import AppTheme from "../../Theme/Theme";
 
-export default function Menu(props) {
+export default function CadastroTurmas(props) {
   const [theme] = useContext(ThemeContext);
 
   return (
@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     marginVertical: 10,
-    backgroundColor: "#00a7df",
+    backgroundColor: "#3D43C6",
   },
 });

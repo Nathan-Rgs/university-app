@@ -16,11 +16,11 @@ import Settings from "../Views/Settings/Settings";
 import Home from "../Views/Home/Home";
 import Menu from "../Views/Menu/Menu";
 // CADASTROS
-import CadastrosAlunos from "../Views/Cadastros/CadastroAlunos";
-import CadastrosDisciplina from "../Views/Cadastros/CadastroDisciplina";
-import CadastrosProfessor from "../Views/Cadastros/CadastroProfessor";
-import CadastrosHistorico from "../Views/Cadastros/CadastroHistorico";
-import CadastrosTurma from "../Views/Cadastros/CadastroTurma";
+import ListaAlunos from "../Views/Cadastros/Listas/ListaAlunos";
+import ListaDisciplina from "../Views/Cadastros/Listas/ListaDisciplina";
+import ListaProfessor from "../Views/Cadastros/Listas/ListaProfessor";
+import ListaHistorico from "../Views/Cadastros/Listas/ListaHistorico";
+import ListaTurma from "../Views/Cadastros/Listas/ListaTurma";
 import NotFoundScreen from "../Views/NotFound";
 
 const MyTheme = {
@@ -57,28 +57,28 @@ function RootNavigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Cadastro Alunos"
-        component={CadastrosAlunos}
+        name="Lista Alunos"
+        component={ListaAlunos}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Cadastro Professor"
-        component={CadastrosProfessor}
+        name="Lista Professor"
+        component={ListaProfessor}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Cadastro Disciplina"
-        component={CadastrosDisciplina}
+        name="Lista Disciplina"
+        component={ListaDisciplina}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Cadastro Turma"
-        component={CadastrosTurma}
+        name="Lista Turma"
+        component={ListaTurma}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Cadastro Historico"
-        component={CadastrosHistorico}
+        name="Lista Historico"
+        component={ListaHistorico}
         options={{ headerShown: false }}
       />
       <Stack.Screen

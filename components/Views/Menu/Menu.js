@@ -26,7 +26,7 @@ export default function Menu(props) {
                 <List.Icon {...props} color="#3D43C6" icon="account" />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
-              onPress={() => props.navigation.navigate("Cadastro Alunos")}
+              onPress={() => props.navigation.navigate("Lista Alunos")}
             ></List.Item>
             <List.Item
               title="Professores"
@@ -34,7 +34,7 @@ export default function Menu(props) {
                 <List.Icon {...props} color="#3D43C6" icon="account-tie" />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
-              onPress={() => props.navigation.navigate("Cadastro Professor")}
+              onPress={() => props.navigation.navigate("Lista Professor")}
             ></List.Item>
             <List.Item
               title="Disciplinas"
@@ -46,7 +46,7 @@ export default function Menu(props) {
                 />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
-              onPress={() => props.navigation.navigate("Cadastro Disciplina")}
+              onPress={() => props.navigation.navigate("Lista Disciplina")}
             ></List.Item>
             <List.Item
               title="Turmas"
@@ -54,7 +54,7 @@ export default function Menu(props) {
                 <List.Icon {...props} color="#3D43C6" icon="account-group" />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
-              onPress={() => props.navigation.navigate("Cadastro Turma")}
+              onPress={() => props.navigation.navigate("Lista Turma")}
             ></List.Item>
             <List.Item
               title="Históricos"
@@ -62,7 +62,7 @@ export default function Menu(props) {
                 <List.Icon {...props} color="#3D43C6" icon="clipboard-list" />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
-              onPress={() => props.navigation.navigate("Cadastro Historico")}
+              onPress={() => props.navigation.navigate("Lista Historico")}
             ></List.Item>
           </View>
         </ScrollView>

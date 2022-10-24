@@ -6,30 +6,33 @@ import { ScrollView } from "react-native-virtualized-view";
 import { db } from "../../../Firebase/firebase";
 import { getDocs, setDoc, query, collection, doc } from "firebase/firestore";
 
-export default function AlunosList(props) {
-  const [alunosList, setAlunosList] = useState([]);
+export default function HistoricosList(props) {
+  const [historicosList, setHistoricosList] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Get Alunos list from Firestore by Firebase
+  // Get historicos list from Firestore by Firebase
   useEffect(() => {
-    // wrap your async call here
-    const loadData = async () => {
-      setLoading(true);
-      await getAlunos();
-      setLoading(false);
-    };
-    loadData();
-  }, []);
+    const unsubscribe = props.navigation.addListener("focus", () => {
+      const loadData = async () => {
+        setLoading(true);
+        await getHistoricos();
+        setLoading(false);
+      };
+      loadData();
+    });
 
-  const getAlunos = async () => {
+    return unsubscribe;
+  }, [props.navigation]);
+
+  const getHistoricos = async () => {
     try {
-      const alunos = await getDocs(query(collection(db, "Aluno")));
+      const historicos = await getDocs(query(collection(db, "Historico")));
 
-      const formattedAlunosList = [];
-      alunos?.forEach((doc) => {
-        formattedAlunosList.push({ ...doc.data(), id: doc.id });
+      const formattedHistoricosList = [];
+      historicos?.forEach((doc) => {
+        formattedHistoricosList.push({ ...doc.data(), id: doc.id });
       });
-      setAlunosList(formattedAlunosList);
+      setHistoricosList(formattedHistoricosList);
     } catch (error) {
       window.alert(error.message);
     }
@@ -46,33 +49,30 @@ export default function AlunosList(props) {
       <View style={styles.container}>
         <View style={styles.cardContainer}>
           <Card.Title
-            title="Alunos"
+            title="Históricos"
             titleStyle={styles.title}
             left={(props) => (
               <Avatar.Icon
                 {...props}
                 style={{ backgroundColor: "#3D43C6" }}
-                icon="account"
+                icon="clipboard-list"
               />
             )}
           />
           <ScrollView>
             <View style={styles.cardContainerContent}>
               <FlatList
-                data={alunosList}
+                data={historicosList}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => {
                   return (
                     <List.Item
-                      title={item.nome}
-                      left={(props) => (
-                        <List.Icon {...props} color="#3D43C6" icon="account" />
-                      )}
+                      title={item.cod_historico}
                       right={(props) => (
-                        <List.Icon {...props} icon="arrow-right" />
+                        <List.Icon {...props} icon="book-edit" />
                       )}
                       onPress={() =>
-                        props.navigation.navigate("Cadastro Alunos")
+                        props.navigation.navigate("Cadastro historicos")
                       }
                     ></List.Item>
                   );

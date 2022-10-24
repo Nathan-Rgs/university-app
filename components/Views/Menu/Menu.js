@@ -26,7 +26,7 @@ export default function Menu(props) {
                 <List.Icon {...props} color="#3D43C6" icon="account" />
               )}
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
-              onPress={() => props.navigation.navigate("Lista Alunos")}
+              onPress={() => props.navigation.navigate("Lista Aluno")}
             ></List.Item>
             <List.Item
               title="Professores"

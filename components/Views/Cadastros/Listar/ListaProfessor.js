@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { List, Avatar, Card } from "react-native-paper";
+import { List, Avatar, Card, FAB } from "react-native-paper";
 import { View, StyleSheet, ActivityIndicator, FlatList } from "react-native";
 import { ScrollView } from "react-native-virtualized-view";
 // FIREBASE AND DB
 import { db } from "../../../Firebase/firebase";
-import { getDocs, setDoc, query, collection, doc } from "firebase/firestore";
+import { getDocs, query, collection } from "firebase/firestore";
 
 export default function ProfessoresList(props) {
   const [professoresList, setProfessoresList] = useState([]);
@@ -12,14 +12,17 @@ export default function ProfessoresList(props) {
 
   // Get professores list from Firestore by Firebase
   useEffect(() => {
-    // wrap your async call here
-    const loadData = async () => {
-      setLoading(true);
-      await getProfessores();
-      setLoading(false);
-    };
-    loadData();
-  }, []);
+    const unsubscribe = props.navigation.addListener("focus", () => {
+      const loadData = async () => {
+        setLoading(true);
+        await getProfessores();
+        setLoading(false);
+      };
+      loadData();
+    });
+
+    return unsubscribe;
+  }, [props.navigation]);
 
   const getProfessores = async () => {
     try {
@@ -52,7 +55,7 @@ export default function ProfessoresList(props) {
               <Avatar.Icon
                 {...props}
                 style={{ backgroundColor: "#3D43C6" }}
-                icon="clipboard-list"
+                icon="account-tie"
               />
             )}
           />
@@ -69,7 +72,10 @@ export default function ProfessoresList(props) {
                         <List.Icon {...props} icon="book-edit" />
                       )}
                       onPress={() =>
-                        props.navigation.navigate("Cadastro professores")
+                        props.navigation.navigate("Insere Professor", {
+                          action: "Editar",
+                          professor: item,
+                        })
                       }
                     ></List.Item>
                   );
@@ -77,6 +83,16 @@ export default function ProfessoresList(props) {
               />
             </View>
           </ScrollView>
+          <FAB
+            icon="plus"
+            color="#5b5b58"
+            style={styles.fab}
+            onPress={() =>
+              props.navigation.navigate("Insere Professor", {
+                action: "Inserir",
+              })
+            }
+          />
         </View>
       </View>
     );
@@ -104,5 +120,11 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 25,
     textAlignVertical: "bottom",
+  },
+  fab: {
+    position: "absolute",
+    margin: 16,
+    right: 0,
+    bottom: 0,
   },
 });

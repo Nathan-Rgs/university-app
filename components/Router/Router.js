@@ -15,12 +15,17 @@ import AppTheme from "../Theme/Theme";
 import Settings from "../Views/Settings/Settings";
 import Home from "../Views/Home/Home";
 import Menu from "../Views/Menu/Menu";
-// CADASTROS
-import ListaAlunos from "../Views/Cadastros/Listas/ListaAlunos";
-import ListaDisciplina from "../Views/Cadastros/Listas/ListaDisciplina";
-import ListaProfessor from "../Views/Cadastros/Listas/ListaProfessor";
-import ListaHistorico from "../Views/Cadastros/Listas/ListaHistorico";
-import ListaTurma from "../Views/Cadastros/Listas/ListaTurma";
+// LISTAGENS E CADASTROS
+import ListaAluno from "../Views/Cadastros/Listar/ListaAluno";
+import ListaDisciplina from "../Views/Cadastros/Listar/ListaDisciplina";
+import ListaProfessor from "../Views/Cadastros/Listar/ListaProfessor";
+import ListaHistorico from "../Views/Cadastros/Listar/ListaHistorico";
+import ListaTurma from "../Views/Cadastros/Listar/ListaTurma";
+import InsereAluno from "../Views/Cadastros/InserirOuEditar/InsereEditaAluno";
+import InsereDisciplina from "../Views/Cadastros/InserirOuEditar/InsereEditaDisciplina";
+import InsereProfessor from "../Views/Cadastros/InserirOuEditar/InsereEditaProfessor";
+import InsereHistorico from "../Views/Cadastros/InserirOuEditar/InsereEditaHistorico";
+import InsereTurma from "../Views/Cadastros/InserirOuEditar/InsereEditaTurma";
 import NotFoundScreen from "../Views/NotFound";
 
 const MyTheme = {
@@ -57,8 +62,8 @@ function RootNavigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Lista Alunos"
-        component={ListaAlunos}
+        name="Lista Aluno"
+        component={ListaAluno}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -79,6 +84,31 @@ function RootNavigator() {
       <Stack.Screen
         name="Lista Historico"
         component={ListaHistorico}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Insere Aluno"
+        component={InsereAluno}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Insere Professor"
+        component={InsereProfessor}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Insere Disciplina"
+        component={InsereDisciplina}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Insere Turma"
+        component={InsereTurma}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Insere Historico"
+        component={InsereHistorico}
         options={{ headerShown: false }}
       />
       <Stack.Screen

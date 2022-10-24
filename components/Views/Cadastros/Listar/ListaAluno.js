@@ -1,35 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { List, Avatar, Card } from "react-native-paper";
+import { List, Avatar, Card, FAB } from "react-native-paper";
 import { View, StyleSheet, ActivityIndicator, FlatList } from "react-native";
 import { ScrollView } from "react-native-virtualized-view";
 // FIREBASE AND DB
 import { db } from "../../../Firebase/firebase";
-import { getDocs, setDoc, query, collection, doc } from "firebase/firestore";
+import { getDocs, query, collection } from "firebase/firestore";
 
-export default function TurmasList(props) {
-  const [turmasList, setTurmasList] = useState([]);
+export default function AlunosList(props) {
+  const [alunosList, setAlunosList] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Get turmas list from Firestore by Firebase
+  // Get Alunos list from Firestore by Firebase
   useEffect(() => {
-    // wrap your async call here
-    const loadData = async () => {
-      setLoading(true);
-      await getTurmas();
-      setLoading(false);
-    };
-    loadData();
-  }, []);
+    const unsubscribe = props.navigation.addListener("focus", () => {
+      const loadData = async () => {
+        setLoading(true);
+        await getAlunos();
+        setLoading(false);
+      };
+      loadData();
+    });
 
-  const getTurmas = async () => {
+    return unsubscribe;
+  }, [props.navigation]);
+
+  const getAlunos = async () => {
     try {
-      const turmas = await getDocs(query(collection(db, "Turma")));
+      const alunos = await getDocs(query(collection(db, "Aluno")));
 
-      const formattedTurmasList = [];
-      turmas?.forEach((doc) => {
-        formattedTurmasList.push({ ...doc.data(), id: doc.id });
+      const formattedAlunosList = [];
+      alunos?.forEach((doc) => {
+        formattedAlunosList.push({ ...doc.data(), id: doc.id });
       });
-      setTurmasList(formattedTurmasList);
+      setAlunosList(formattedAlunosList);
     } catch (error) {
       window.alert(error.message);
     }
@@ -46,30 +49,36 @@ export default function TurmasList(props) {
       <View style={styles.container}>
         <View style={styles.cardContainer}>
           <Card.Title
-            title="Turmas"
+            title="Alunos"
             titleStyle={styles.title}
             left={(props) => (
               <Avatar.Icon
                 {...props}
                 style={{ backgroundColor: "#3D43C6" }}
-                icon="account-group"
+                icon="account"
               />
             )}
           />
           <ScrollView>
             <View style={styles.cardContainerContent}>
               <FlatList
-                data={turmasList}
+                data={alunosList}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => {
                   return (
                     <List.Item
-                      title={item.cod_turma}
+                      title={item.nome}
+                      left={(props) => (
+                        <List.Icon {...props} color="#3D43C6" icon="account" />
+                      )}
                       right={(props) => (
-                        <List.Icon {...props} icon="book-edit" />
+                        <List.Icon {...props} icon="arrow-right" />
                       )}
                       onPress={() =>
-                        props.navigation.navigate("Cadastro turmas")
+                        props.navigation.navigate("Insere Aluno", {
+                          action: "Editar",
+                          aluno: item,
+                        })
                       }
                     ></List.Item>
                   );
@@ -77,6 +86,14 @@ export default function TurmasList(props) {
               />
             </View>
           </ScrollView>
+          <FAB
+            icon="plus"
+            color="#5b5b58"
+            style={styles.fab}
+            onPress={() =>
+              props.navigation.navigate("Insere Aluno", { action: "Inserir" })
+            }
+          />
         </View>
       </View>
     );
@@ -104,5 +121,11 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 25,
     textAlignVertical: "bottom",
+  },
+  fab: {
+    position: "absolute",
+    margin: 16,
+    right: 0,
+    bottom: 0,
   },
 });

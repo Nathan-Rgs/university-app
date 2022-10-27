@@ -30,7 +30,7 @@ export default function ProfessoresList(props) {
 
       const formattedProfessoresList = [];
       professores?.forEach((doc) => {
-        formattedProfessoresList.push({ ...doc.data(), id: doc.id });
+        formattedProfessoresList.push({ ...doc.data() });
       });
       setProfessoresList(formattedProfessoresList);
     } catch (error) {
@@ -63,11 +63,18 @@ export default function ProfessoresList(props) {
             <View style={styles.cardContainerContent}>
               <FlatList
                 data={professoresList}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.cod_prof}
                 renderItem={({ item }) => {
                   return (
                     <List.Item
                       title={item.nome}
+                      left={(props) => (
+                        <List.Icon
+                          {...props}
+                          color="#3D43C6"
+                          icon="account-tie"
+                        />
+                      )}
                       right={(props) => (
                         <List.Icon {...props} icon="book-edit" />
                       )}

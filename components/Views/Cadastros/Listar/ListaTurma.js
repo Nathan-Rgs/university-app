@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { List, Avatar, Card } from "react-native-paper";
+import { List, Avatar, Card, FAB } from "react-native-paper";
 import { View, StyleSheet, ActivityIndicator, FlatList } from "react-native";
 import { ScrollView } from "react-native-virtualized-view";
 // FIREBASE AND DB
 import { db } from "../../../Firebase/firebase";
-import { getDocs, setDoc, query, collection, doc } from "firebase/firestore";
+import { getDocs, query, collection } from "firebase/firestore";
 
 export default function TurmasList(props) {
   const [turmasList, setTurmasList] = useState([]);
@@ -30,7 +30,7 @@ export default function TurmasList(props) {
 
       const formattedTurmasList = [];
       turmas?.forEach((doc) => {
-        formattedTurmasList.push({ ...doc.data(), id: doc.id });
+        formattedTurmasList.push({ ...doc.data() });
       });
       setTurmasList(formattedTurmasList);
     } catch (error) {
@@ -63,16 +63,26 @@ export default function TurmasList(props) {
             <View style={styles.cardContainerContent}>
               <FlatList
                 data={turmasList}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.cod_turma}
                 renderItem={({ item }) => {
                   return (
                     <List.Item
-                      title={item.cod_turma}
+                      title={`${item.ano} - ${item.horario}`}
+                      left={(props) => (
+                        <List.Icon
+                          {...props}
+                          color="#3D43C6"
+                          icon="account-group"
+                        />
+                      )}
                       right={(props) => (
                         <List.Icon {...props} icon="book-edit" />
                       )}
                       onPress={() =>
-                        props.navigation.navigate("Cadastro turmas")
+                        props.navigation.navigate("Insere Turma", {
+                          action: "Editar",
+                          turma: item,
+                        })
                       }
                     ></List.Item>
                   );
@@ -80,6 +90,16 @@ export default function TurmasList(props) {
               />
             </View>
           </ScrollView>
+          <FAB
+            icon="plus"
+            color="#5b5b58"
+            style={styles.fab}
+            onPress={() =>
+              props.navigation.navigate("Insere Turma", {
+                action: "Inserir",
+              })
+            }
+          />
         </View>
       </View>
     );
@@ -107,5 +127,11 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 25,
     textAlignVertical: "bottom",
+  },
+  fab: {
+    position: "absolute",
+    margin: 16,
+    right: 0,
+    bottom: 0,
   },
 });

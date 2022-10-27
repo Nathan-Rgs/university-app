@@ -30,7 +30,7 @@ export default function HistoricosList(props) {
 
       const formattedHistoricosList = [];
       historicos?.forEach((doc) => {
-        formattedHistoricosList.push({ ...doc.data(), id: doc.id });
+        formattedHistoricosList.push({ ...doc.data() });
       });
       setHistoricosList(formattedHistoricosList);
     } catch (error) {
@@ -68,6 +68,13 @@ export default function HistoricosList(props) {
                   return (
                     <List.Item
                       title={item.cod_historico}
+                      left={(props) => (
+                        <List.Icon
+                          {...props}
+                          color="#3D43C6"
+                          icon="clipboard-list"
+                        />
+                      )}
                       right={(props) => (
                         <List.Icon {...props} icon="book-edit" />
                       )}

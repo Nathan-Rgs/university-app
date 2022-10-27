@@ -30,7 +30,7 @@ export default function DisciplinasList(props) {
 
       const formattedDisciplinasList = [];
       disciplinas?.forEach((doc) => {
-        formattedDisciplinasList.push({ ...doc.data(), id: doc.id });
+        formattedDisciplinasList.push({ ...doc.data() });
       });
       setDisciplinasList(formattedDisciplinasList);
     } catch (error) {
@@ -63,16 +63,26 @@ export default function DisciplinasList(props) {
             <View style={styles.cardContainerContent}>
               <FlatList
                 data={disciplinasList}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.cod_disc}
                 renderItem={({ item }) => {
                   return (
                     <List.Item
                       title={item.nome_disc}
+                      left={(props) => (
+                        <List.Icon
+                          {...props}
+                          color="#3D43C6"
+                          icon="book-open-page-variant"
+                        />
+                      )}
                       right={(props) => (
                         <List.Icon {...props} icon="book-edit" />
                       )}
                       onPress={() =>
-                        props.navigation.navigate("Cadastro disciplinas")
+                        props.navigation.navigate("Insere Disciplina", {
+                          action: "Editar",
+                          disciplina: item,
+                        })
                       }
                     ></List.Item>
                   );
@@ -84,7 +94,11 @@ export default function DisciplinasList(props) {
             icon="plus"
             color="#5b5b58"
             style={styles.fab}
-            onPress={() => props.navigation.navigate("Insere Disciplina")}
+            onPress={() =>
+              props.navigation.navigate("Insere Disciplina", {
+                action: "Inserir",
+              })
+            }
           />
         </View>
       </View>

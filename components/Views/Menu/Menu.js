@@ -7,7 +7,7 @@ export default function Menu(props) {
     <View style={styles.container}>
       <View style={styles.cardContainer}>
         <Card.Title
-          title="Cadastros"
+          title="Menu"
           titleStyle={styles.title}
           left={(props) => (
             <Avatar.Icon
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   title: {
-    marginLeft: 45,
+    marginLeft: 70,
     paddingTop: 10,
     color: "black",
     fontSize: 25,

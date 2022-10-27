@@ -30,7 +30,7 @@ export default function AlunosList(props) {
 
       const formattedAlunosList = [];
       alunos?.forEach((doc) => {
-        formattedAlunosList.push({ ...doc.data(), id: doc.id });
+        formattedAlunosList.push({ ...doc.data() });
       });
       setAlunosList(formattedAlunosList);
     } catch (error) {
@@ -63,7 +63,7 @@ export default function AlunosList(props) {
             <View style={styles.cardContainerContent}>
               <FlatList
                 data={alunosList}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.matricula}
                 renderItem={({ item }) => {
                   return (
                     <List.Item

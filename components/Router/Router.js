@@ -26,7 +26,8 @@ import InsereDisciplina from "../Views/Cadastros/InserirOuEditar/InsereEditaDisc
 import InsereProfessor from "../Views/Cadastros/InserirOuEditar/InsereEditaProfessor";
 import InsereHistorico from "../Views/Cadastros/InserirOuEditar/InsereEditaHistorico";
 import InsereTurma from "../Views/Cadastros/InserirOuEditar/InsereEditaTurma";
-import VisualizarTurmas from "../Views/Visualizar/VisualizarTurmas";
+import VisualizarTurmas from "../Views/Cadastros/Visualizar/VisualizarTurmas";
+import VisualizarHistoricos from "../Views/Cadastros/Visualizar/VisualizarHistoricos";
 
 const MyTheme = {
   ...DefaultTheme,
@@ -114,6 +115,11 @@ function RootNavigator() {
       <Stack.Screen
         name="Visualizar Turma"
         component={VisualizarTurmas}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Visualizar Historico"
+        component={VisualizarHistoricos}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

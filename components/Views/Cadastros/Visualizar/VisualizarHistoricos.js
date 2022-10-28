@@ -8,7 +8,7 @@ export default function HistoricosList(props) {
     <View style={styles.container}>
       <View style={styles.cardContainer}>
         <Card.Title
-          title="Visualizar Turmas"
+          title="Visualizar Históricos"
           left={(props) => (
             <Avatar.Icon
               {...props}
@@ -19,7 +19,7 @@ export default function HistoricosList(props) {
         />
         <ScrollView>
           <View style={styles.cardContainerContent}>
-            <Text>COLOCAR LISTA DE TURMAS / ALUNOS AQ</Text>
+            <Text>COLOCAR LISTA DE HISTORICOS AQ</Text>
           </View>
         </ScrollView>
       </View>

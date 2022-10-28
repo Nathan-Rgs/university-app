@@ -48,14 +48,34 @@ export default function Menu(props) {
               right={(props) => <List.Icon {...props} icon="arrow-right" />}
               onPress={() => props.navigation.navigate("Lista Disciplina")}
             ></List.Item>
-            <List.Item
+            <List.Accordion
               title="Históricos"
+              style={{ backgroundColor: "white" }}
               left={(props) => (
                 <List.Icon {...props} color="#3D43C6" icon="clipboard-list" />
               )}
-              right={(props) => <List.Icon {...props} icon="arrow-right" />}
-              onPress={() => props.navigation.navigate("Lista Historico")}
-            ></List.Item>
+            >
+              <List.Item
+                style={{ width: "90%", marginLeft: 25 }}
+                title="Inserir/Editar"
+                left={(props) => (
+                  <List.Icon {...props} color="#3D43C6" icon="book-edit" />
+                )}
+                right={(props) => <List.Icon {...props} icon="arrow-right" />}
+                onPress={() => props.navigation.navigate("Lista Historico")}
+              ></List.Item>
+              <List.Item
+                style={{ width: "90%", marginLeft: 25 }}
+                title="Visualizar"
+                left={(props) => (
+                  <List.Icon {...props} color="#3D43C6" icon="eye" />
+                )}
+                right={(props) => <List.Icon {...props} icon="arrow-right" />}
+                onPress={() =>
+                  props.navigation.navigate("Visualizar Historico")
+                }
+              ></List.Item>
+            </List.Accordion>
             <List.Accordion
               title="Turmas"
               style={{ backgroundColor: "white" }}

@@ -11,6 +11,7 @@ import {
   Provider,
 } from "react-native-paper";
 import { View, StyleSheet } from "react-native";
+import NumericInput from "react-native-numeric-input";
 // FIREBASE, DB AND UTILS
 import { db } from "../../../Firebase/firebase";
 import { setDoc, doc } from "firebase/firestore";
@@ -135,14 +136,33 @@ export default function InsereEditaDisciplina(props) {
               value={`${watch("nome_disc")}`}
               onChangeText={(text) => setValue("nome_disc", text)}
             />
-            <TextInput
-              style={styles.inputs}
-              label={"Carga Horária"}
-              placeholder={"Carga Horária (ex: 120)"}
-              error={inputError.carga_hor}
-              keyboardType="number-pad"
-              value={`${watch("carga_hor")}`}
-              onChangeText={(text) => setValue("carga_hor", text)}
+            <Avatar.Text
+              size={24}
+              style={{
+                width: 95,
+                borderRadius: 5,
+                marginBottom: 10,
+                backgroundColor: "#3D43C6",
+              }}
+              label="Carga Horária:"
+            />
+            <NumericInput
+              value={Number(watch("carga_hor"))}
+              initValue={watch("carga_hor")}
+              onChange={(value) => setValue("carga_hor", value)}
+              minValue={1}
+              maxValue={1000}
+              totalWidth={240}
+              totalHeight={50}
+              iconSize={25}
+              step={1}
+              valueType="real"
+              rounded
+              textColor="#B59DFA"
+              iconStyle={{ color: "white" }}
+              rightButtonBackgroundColor="#592A9C"
+              leftButtonBackgroundColor="#964ADB"
+              containerStyle={{ marginBottom: 10, alignSelf: "center" }}
             />
             <Button
               style={styles.submitButton}

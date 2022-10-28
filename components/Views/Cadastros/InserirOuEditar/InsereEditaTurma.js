@@ -74,10 +74,12 @@ export default function InsereEditaTurma(props) {
 
   const getProfessores = async () => {
     try {
-      const disciplinas = await getDocs(query(collection(db, "Professor")));
+      const professoresResult = await getDocs(
+        query(collection(db, "Professor"))
+      );
 
       const formattedProfessoresList = [];
-      disciplinas?.forEach((doc) => {
+      professoresResult?.forEach((doc) => {
         formattedProfessoresList.push({ ...doc.data() });
       });
       setProfessores(formattedProfessoresList);

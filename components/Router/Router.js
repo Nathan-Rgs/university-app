@@ -16,17 +16,17 @@ import Settings from "../Views/Settings/Settings";
 import Home from "../Views/Home/Home";
 import Menu from "../Views/Menu/Menu";
 // LISTAGENS E CADASTROS
-import ListaAluno from "../Views/Cadastros/Listar/ListaAluno";
-import ListaDisciplina from "../Views/Cadastros/Listar/ListaDisciplina";
-import ListaProfessor from "../Views/Cadastros/Listar/ListaProfessor";
-import ListaHistorico from "../Views/Cadastros/Listar/ListaHistorico";
-import ListaTurma from "../Views/Cadastros/Listar/ListaTurma";
+import ListaAluno from "../Views/Cadastros/ListarCadastro/ListaAluno";
+import ListaDisciplina from "../Views/Cadastros/ListarCadastro/ListaDisciplina";
+import ListaProfessor from "../Views/Cadastros/ListarCadastro/ListaProfessor";
+import ListaHistorico from "../Views/Cadastros/ListarCadastro/ListaHistorico";
+import ListaTurma from "../Views/Cadastros/ListarCadastro/ListaTurma";
 import InsereAluno from "../Views/Cadastros/InserirOuEditar/InsereEditaAluno";
 import InsereDisciplina from "../Views/Cadastros/InserirOuEditar/InsereEditaDisciplina";
 import InsereProfessor from "../Views/Cadastros/InserirOuEditar/InsereEditaProfessor";
 import InsereHistorico from "../Views/Cadastros/InserirOuEditar/InsereEditaHistorico";
 import InsereTurma from "../Views/Cadastros/InserirOuEditar/InsereEditaTurma";
-import NotFoundScreen from "../Views/NotFound";
+import VisualizarTurmas from "../Views/Visualizar/VisualizarTurmas";
 
 const MyTheme = {
   ...DefaultTheme,
@@ -112,9 +112,9 @@ function RootNavigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ title: "Oops!" }}
+        name="Visualizar Turma"
+        component={VisualizarTurmas}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

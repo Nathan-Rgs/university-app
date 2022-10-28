@@ -1,5 +1,6 @@
+import { ScrollView, View, StyleSheet, Pressable, Text } from "react-native";
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Avatar, Card } from "react-native-paper";
 // THEME AND CONTEXT
 import ThemeContext from "../../Theme/ThemeContext";
 import AppTheme from "../../Theme/Theme";
@@ -9,53 +10,65 @@ export default function Settings() {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.text, { fontSize: 30 }]}> Settings Page </Text>
-      <Text style={[styles.text, { fontSize: 15 }]}>
-        Change the app Background
-      </Text>
-      <View style={{ marginTop: 50 }}>
-        <Pressable
-          style={styles.pressableStyle}
-          onPress={() => {
-            setTheme("ImmersiveGradient");
-          }}
-        >
-          <Text
-            style={{
-              color: AppTheme[theme + "Container"].texts.textColor,
-            }}
-          >
-            3D Gradient
-          </Text>
-        </Pressable>
-        <Pressable
-          style={styles.pressableStyle}
-          onPress={() => {
-            setTheme("PurpleGradient");
-          }}
-        >
-          <Text
-            style={{
-              color: AppTheme[theme + "Container"].texts.textColor,
-            }}
-          >
-            Purple Gradient
-          </Text>
-        </Pressable>
-        <Pressable
-          style={styles.pressableStyle}
-          onPress={() => {
-            setTheme("RainbowBackground");
-          }}
-        >
-          <Text
-            style={{
-              color: AppTheme[theme + "Container"].texts.textColor,
-            }}
-          >
-            Rainbow Background
-          </Text>
-        </Pressable>
+      <View style={styles.cardContainer}>
+        <Card.Title
+          title="Settings"
+          titleStyle={styles.title}
+          left={(props) => (
+            <Avatar.Icon
+              {...props}
+              style={{ backgroundColor: "#3D43C6" }}
+              icon="cog"
+            />
+          )}
+        />
+
+        <ScrollView>
+          <View style={styles.cardContainerContent}>
+            <Pressable
+              style={styles.pressableStyle}
+              onPress={() => {
+                setTheme("ImmersiveGradient");
+              }}
+            >
+              <Text
+                style={{
+                  color: AppTheme[theme + "Container"].texts.textColor,
+                }}
+              >
+                3D Gradient
+              </Text>
+            </Pressable>
+            <Pressable
+              style={styles.pressableStyle}
+              onPress={() => {
+                setTheme("PurpleGradient");
+              }}
+            >
+              <Text
+                style={{
+                  color: AppTheme[theme + "Container"].texts.textColor,
+                }}
+              >
+                Purple Gradient
+              </Text>
+            </Pressable>
+            <Pressable
+              style={styles.pressableStyle}
+              onPress={() => {
+                setTheme("RainbowBackground");
+              }}
+            >
+              <Text
+                style={{
+                  color: AppTheme[theme + "Container"].texts.textColor,
+                }}
+              >
+                Rainbow Background
+              </Text>
+            </Pressable>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
@@ -64,11 +77,24 @@ export default function Settings() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
   },
-  text: {
-    color: "white",
+  cardContainer: {
+    marginHorizontal: 20,
+    borderRadius: 10,
+    height: "auto",
+    backgroundColor: "white",
+  },
+  cardContainerContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+  },
+  title: {
+    marginLeft: 55,
+    paddingTop: 10,
+    color: "black",
+    fontSize: 25,
+    textAlignVertical: "bottom",
   },
   pressableStyle: {
     width: "auto",

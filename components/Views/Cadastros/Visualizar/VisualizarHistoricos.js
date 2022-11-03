@@ -141,8 +141,8 @@ export default function HistoricosList(props) {
               />
             )}
           />
-          <View>
-            <Text>Filtrar por turma: </Text>
+          <View style={styles.pickerArea}>
+            <Text style={styles.textPicker}>Filtrar: </Text>
             <Picker
                 selectedValue={turmasSelecionada}
                 style={styles.picker}
@@ -228,9 +228,17 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
+  pickerArea:{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  textPicker:{
+    width: "90%"
+  },
   picker: {
     backgroundColor: "#E7DFEC",
-    marginBottom: 10,
+    width: "90%"
   },
   listItem: {
     display: "flex",

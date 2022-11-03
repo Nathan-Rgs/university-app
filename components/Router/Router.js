@@ -27,6 +27,8 @@ import InsereProfessor from "../Views/Cadastros/InserirOuEditar/InsereEditaProfe
 import InsereHistorico from "../Views/Cadastros/InserirOuEditar/InsereEditaHistorico";
 import InsereTurma from "../Views/Cadastros/InserirOuEditar/InsereEditaTurma";
 import VisualizarTurmas from "../Views/Cadastros/Visualizar/VisualizarTurmas";
+import VisualizarAlunosTurma from "../Views/Cadastros/Visualizar/VisualizarAlunosTurma";
+import VisualizarHistoricoAluno from "../Views/Cadastros/Visualizar/VisualizarHistoricoAluno";
 import VisualizarHistoricos from "../Views/Cadastros/Visualizar/VisualizarHistoricos";
 
 const MyTheme = {
@@ -88,6 +90,11 @@ function RootNavigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name="Visualizar Historico Aluno"
+        component={VisualizarHistoricoAluno}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
         name="Insere Aluno"
         component={InsereAluno}
         options={{ headerShown: false }}
@@ -115,6 +122,11 @@ function RootNavigator() {
       <Stack.Screen
         name="Visualizar Turma"
         component={VisualizarTurmas}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Visualizar Alunos Turma"
+        component={VisualizarAlunosTurma}
         options={{ headerShown: false }}
       />
       <Stack.Screen

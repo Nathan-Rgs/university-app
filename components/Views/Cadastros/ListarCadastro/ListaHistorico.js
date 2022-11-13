@@ -6,6 +6,10 @@ import { ScrollView } from "react-native-virtualized-view";
 import { db } from "../../../Firebase/firebase";
 import { getDocs, query, collection, doc, deleteDoc } from "firebase/firestore";
 
+/*
+responsável por consumir os documentos do firestore
+e exibi-los de forma legivel ao usuário
+*/
 export default function HistoricosList(props) {
   const [historicosList, setHistoricosList] = useState([]);
   const [alunosList, setAlunosList] = useState([]);

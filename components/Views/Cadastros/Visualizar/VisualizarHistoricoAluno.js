@@ -6,6 +6,7 @@ import { ScrollView } from "react-native-virtualized-view";
 import { db } from "../../../Firebase/firebase";
 import { getDocs, query, collection, doc, deleteDoc, where } from "firebase/firestore";
 
+//reponsavél por exibir a lista de históricos de um aluno especifico 
 export default function TurmasList(props) {
 
     const [routeParams] = useState(props.route.params);
@@ -99,7 +100,7 @@ export default function TurmasList(props) {
               <View style={styles.cardContainerContent}>
                 <FlatList
                     data={historicoList}
-                    keyExtractor={(item) => item.cod_historico}
+                    keyExtractor={(item) => item.index}
                     renderItem={({ item }) => {
                     return (
                         <List.Item

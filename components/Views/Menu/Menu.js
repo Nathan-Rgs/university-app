@@ -2,6 +2,10 @@ import { ScrollView, View, StyleSheet } from "react-native";
 import React from "react";
 import { List, Avatar, Card } from "react-native-paper";
 
+/*
+responsável por possibilitar as ações do usuario, visualizar listas 
+e gerir cadastros
+*/
 export default function Menu(props) {
   return (
     <View style={styles.container}>

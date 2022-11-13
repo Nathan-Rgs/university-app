@@ -7,6 +7,10 @@ import { ScrollView } from "react-native-virtualized-view";
 import { db } from "../../../Firebase/firebase";
 import { getDocs, query, collection, doc, deleteDoc } from "firebase/firestore";
 
+/*
+responsável por filtrar, ordernar e relacionar os dados de diversas tabelas,
+como alunos, turmas e histórico, possibilitando uma visão global por turma.
+*/
 export default function HistoricosList(props) {
   const historicosDoc = [];
   const alunosDoc = [];
@@ -73,14 +77,19 @@ export default function HistoricosList(props) {
   const buildList = () => {
     let turmas = [];
     let historicos = [];
+    
 
     historicosDoc.map((historicoDoc, index) => {
+      
+      let aluno = alunosDoc.find((aluno) => aluno.matricula == historicoDoc.matricula);
+
+      let turma = turmasDoc.find((turma) => turma.cod_turma == historicoDoc.cod_turma)
       let historico = {
         num: index,
-        aluno: alunosDoc.find((aluno) => aluno.matricula == historicoDoc.matricula).nome,
+        aluno: aluno == undefined ? "Aluno não encontrado" : aluno.nome,
         nota: historicoDoc.nota,
         frequencia: historicoDoc.frequencia,
-        turma:`${turmasDoc.find((turma) => turma.cod_turma == historicoDoc.cod_turma).ano} - ${turmasDoc.find((turma) => turma.cod_turma == historicoDoc.cod_turma).horario}`
+        turma: turma == undefined ? "turma não encontrada" : `${turma.ano} - ${turma.horario}`,
       }
 
       if (turmas.indexOf(historico.turma) == -1){

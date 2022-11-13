@@ -1,3 +1,8 @@
+/*
+O arquivo Theme.js e ThemeContext.js estabele um "tema" comum para 
+todo o aplicativo, no caso, um background.
+*/
+
 // BACKGROUNDS
 import ImmersiveGradient from "../../assets/imgs/3dGradientBackground.png";
 import PurpleGradient from "../../assets/imgs/purpleGradientBackgroung.png";

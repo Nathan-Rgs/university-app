@@ -6,6 +6,10 @@ import { ScrollView } from "react-native-virtualized-view";
 import { db } from "../../../Firebase/firebase";
 import { getDocs, query, collection } from "firebase/firestore";
 
+/*
+responsável por consumir os documentos do firestore
+e exibi-los de forma legivel ao usuário
+*/
 export default function TurmasList(props) {
   const [turmasList, setTurmasList] = useState([]);
   const [loading, setLoading] = useState(false);

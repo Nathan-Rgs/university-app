@@ -6,6 +6,12 @@ import ThemeContext from "../../Theme/ThemeContext";
 import AppTheme from "../../Theme/Theme";
 
 export default function Settings() {
+
+  /*
+  foi utilizado um usecontext para sinalizar para toda a aplicação 
+  a modificação de background, assim o usuário clicando em umas das
+  três opções ele modifica a imagem de todas as telas do app
+  */
   const [theme, setTheme] = useContext(ThemeContext);
 
   return (

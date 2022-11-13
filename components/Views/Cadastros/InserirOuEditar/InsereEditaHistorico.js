@@ -24,6 +24,13 @@ import {
 } from "firebase/firestore";
 import uuid from "react-native-uuid";
 
+/*
+responsável pela criação ou edição de documentos,
+dependendo da rota que lhe antecede é possível capturar 
+se o usuário está editando ou criando um novo cadastro,
+caso seja criação o formulário é carrado vazio, na edição
+o formulário é carregado com os valores do banco de dados 
+*/
 export default function InsereEditaHistorico(props) {
   const { register, setValue, handleSubmit, watch } = useForm();
   const [routeParams] = useState(props.route.params);

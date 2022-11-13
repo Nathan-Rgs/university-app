@@ -56,6 +56,7 @@ export default function Router() {
   );
 }
 
+//define a lista de possibilidade de navegação
 function RootNavigator() {
   return (
     <Stack.Navigator initialRouteName="Root">
@@ -140,6 +141,7 @@ function RootNavigator() {
 
 const BottomTab = createBottomTabNavigator();
 
+//define barra inferior de navegação apenas com as "telas" (home, cadastros e configurações)
 function BottomTabNavigator() {
   return (
     <BottomTab.Navigator

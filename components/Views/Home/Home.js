@@ -23,6 +23,11 @@ export default function Home(props) {
     return unsubscribe;
   }, [props.navigation]);
 
+  /*
+  metodo responsavel por capturar as imagens das API atrvés de um get
+  a randomuser e montar a lista de devs, além de gerenciar a os erros de
+  requisição capturando imagens defaults
+  */
   const getDevs = async () => {
     try {
       let devs = [
@@ -35,18 +40,27 @@ export default function Home(props) {
           avatar: "",
           nome: "Nathan Roberto Gonçalves dos Santos",
           ra: "200065"
+        },
+        {
+          avatar: "",
+          nome: "Lucas Marinelli Maciel",
+          ra: "200285"
         }
       ]
 
-      fetch('http://randomuser.me/api/?results=2')
+      fetch('http://randomuser.me/api/?results=3')
         .then((response) => response.json())
           .then((result) => {
 
-            if (result.results.length >= 2){
+            if (result.results.length >= 3){
               //console.log("temos as imagens");
               devs[0].avatar = result.results[0].picture.large;
               devs[1].avatar = result.results[1].picture.large;
+              devs[2].avatar = result.results[2].picture.large;
               setflagImages(true);
+            }
+            else{
+              setflagImages(false);
             }
 
             //console.log(devs);
@@ -54,10 +68,12 @@ export default function Home(props) {
             setLoading(false);  
           })
           .catch((error) => {
+            setflagImages(false);
           });
 
     } catch (error) {
       window.alert(error);
+      setflagImages(false);
       throw error;
     }
   };
@@ -79,11 +95,20 @@ export default function Home(props) {
                 <Text style={styles.text}><Text style={styles.bold}>RA:</Text> {devList[0].ra}</Text>
               </View>
             </View>
+
             <View style={styles.card}>
               <Image source={flagImages? {uri: devList[1].avatar} : require('../../../assets/imgs/photo.jpg')} style={styles.avatarImage}/>
               <View style={styles.infosContainer}>
                 <Text style={styles.text}><Text style={styles.bold}>Nome:</Text> {devList[1].nome}</Text>
                 <Text style={styles.text}><Text style={styles.bold}>RA:</Text> {devList[1].ra}</Text>
+              </View>
+            </View>
+
+            <View style={styles.card}>
+              <Image source={flagImages? {uri: devList[2].avatar} : require('../../../assets/imgs/photo2.jpg')} style={styles.avatarImage}/>
+              <View style={styles.infosContainer}>
+                <Text style={styles.text}><Text style={styles.bold}>Nome:</Text> {devList[2].nome}</Text>
+                <Text style={styles.text}><Text style={styles.bold}>RA:</Text> {devList[2].ra}</Text>
               </View>
             </View>
           </View>

@@ -6,6 +6,11 @@ import { ScrollView } from "react-native-virtualized-view";
 import { db } from "../../../Firebase/firebase";
 import { getDocs, query, collection, doc, deleteDoc } from "firebase/firestore";
 
+/*
+Responsável por exibir para o usuários todas as turmas
+registradas na base e possbilitar uma navegação para
+uma lista de todos os alunos daquela turma
+*/
 export default function TurmasList(props) {
 
   const [turmasList, setTurmasList] = useState([]);
